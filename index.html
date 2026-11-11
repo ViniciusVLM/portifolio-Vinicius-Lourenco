@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Vinicius Lourenço</title>
+  <meta name="description" content="Vinicius Lourenço Martins, desenvolvedor full-stack em São Paulo. Python, Java, React, Node.js, automação e segurança da informação.">
+  <meta property="og:title" content="Vinicius Lourenço — Desenvolvedor full-stack">
+  <meta property="og:description" content="Projetos, carreira e contato.">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 42 40'%3E%3Crect width='42' height='40' fill='%23000'/%3E%3Cpath d='M5 9l9 22 9-22M28 9v22h9' fill='none' stroke='%23fff' stroke-width='3.4' stroke-linecap='square' stroke-linejoin='miter'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <canvas class="stars" id="stars" aria-hidden="true"></canvas>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+
+  <header class="nav">
+    <nav class="nav__inner" aria-label="Principal">
+      <div class="nav__side">
+        <a href="#carreira" class="nav__link" data-scramble>Carreira</a>
+        <a href="#sobre" class="nav__link" data-scramble>Sobre</a>
+      </div>
+      <a href="#topo" class="nav__logo" aria-label="Voltar ao topo">
+        <svg viewBox="0 0 42 40" aria-hidden="true"><path d="M5 9l9 22 9-22M28 9v22h9"/></svg>
+      </a>
+      <div class="nav__side nav__side--right">
+        <a href="#projetos" class="nav__link" data-scramble>Projetos</a>
+        <a href="#conquistas" class="nav__link" data-scramble>Conquistas</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="topo">
+    <!-- abertura: cubo -> retrato -->
+    <section class="stage" id="stage" aria-label="Apresentação">
+      <div class="stage__pin">
+        <canvas class="stage__portrait" id="portrait" aria-hidden="true"></canvas>
+        <div class="stage__beam" aria-hidden="true"></div>
+        <canvas class="stage__cube" id="cube" aria-label="Cubo mágico 3D que se resolve sozinho. Clique para ver o modo aramado."></canvas>
+
+        <p class="stage__meta stage__meta--left mono" id="heroMeta">
+          <span data-clock>--:--:--</span> <span class="dim">São Paulo / GMT-3 /</span>
+          <span class="status" id="status">codando</span>
+        </p>
+        <p class="stage__meta stage__meta--right mono dim">
+          Construindo em silêncio<br>a partir de São Paulo, BR
+        </p>
+
+        <div class="stage__card mono" id="stageCard">
+          <span class="big" data-clock>--:--:--</span>
+          <span class="dim">São Paulo, BR · GMT-3</span>
+          <span class="open"><i></i> Aberto a oportunidades</span>
+        </div>
+
+        <div class="stage__name">
+          <p class="eyebrow mono">/ Desenvolvedor full-stack</p>
+          <h1 class="display">Vinicius<br>Lourenço</h1>
+        </div>
+
+        <a href="#contato" class="pill" id="heroCta">
+          <span class="pill__icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg>
+          </span>
+          Fale comigo
+        </a>
+
+        <p class="stage__hint mono dim" id="cubeHint"><span id="hintClick">clique no cubo</span> · <span id="cubeStatus" class="cube-status">embaralhado</span></p>
+
+        <div class="stage__scroll mono dim" aria-hidden="true">
+          <span>Role</span><i></i>
+        </div>
+        <p class="stage__since mono" id="since" hidden></p>
+      </div>
+    </section>
+
+    <!-- sobre -->
+    <section class="about wrap" id="sobre">
+      <div class="about__text">
+        <h2 class="display about__title" id="aboutTitle"></h2>
+        <p class="about__body" id="aboutBody"></p>
+      </div>
+      <figure class="about__globe">
+        <canvas id="globe" aria-label="Globo de pontos marcando São Paulo"></canvas>
+        <figcaption class="mono">
+          <span>São Paulo, Brasil</span>
+          <span class="accent" id="coords"></span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- formação -->
+    <section class="edu" id="formacao">
+      <canvas class="edu__waves" id="waves" aria-hidden="true"></canvas>
+      <div class="wrap">
+        <p class="eyebrow mono">— Formação</p>
+        <h2 class="display edu__title">Onde tudo começou</h2>
+        <div class="edu__grid" id="eduGrid"></div>
+      </div>
+    </section>
+
+    <!-- carreira -->
+    <section class="career wrap" id="carreira">
+      <p class="eyebrow mono">— Carreira</p>
+      <div class="career__track" id="careerTrack">
+        <svg class="career__lines" id="careerLines" aria-hidden="true"></svg>
+      </div>
+    </section>
+
+    <!-- skills -->
+    <section class="skills" id="skills" aria-labelledby="skillsTitle">
+      <div class="wrap skills__head">
+        <p class="eyebrow mono" id="skillsTitle">— Stack</p>
+        <p class="mono dim skills__tip">puxe os fios da teia</p>
+      </div>
+      <canvas id="constellation" aria-hidden="true"></canvas>
+      <ul class="sr-only" id="skillsList"></ul>
+    </section>
+
+    <!-- projetos -->
+    <section class="projects" id="projetos">
+      <div class="wrap">
+        <p class="eyebrow mono">— Projetos</p>
+      </div>
+      <div class="projects__body wrap">
+        <ol class="projects__list" id="projectList"></ol>
+        <div class="projects__aside">
+          <article class="pcard" id="pcard" aria-live="polite"></article>
+        </div>
+        <svg class="projects__cone" id="cone" aria-hidden="true">
+          <defs>
+            <pattern id="halftone" width="6" height="6" patternUnits="userSpaceOnUse">
+              <circle cx="3" cy="3" r="1.1" fill="#fff"/>
+            </pattern>
+            <linearGradient id="coneFade" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0" stop-color="#fff" stop-opacity="0.02"/>
+              <stop offset="1" stop-color="#fff" stop-opacity="0.55"/>
+            </linearGradient>
+            <mask id="coneMask">
+              <rect width="100%" height="100%" fill="url(#coneFade)"/>
+            </mask>
+          </defs>
+          <polygon id="conePoly" fill="url(#halftone)" mask="url(#coneMask)"/>
+          <polygon id="coneEdge" fill="none"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- conquistas -->
+    <section class="wins wrap" id="conquistas">
+      <p class="eyebrow mono">— Conquistas</p>
+      <div id="winsRows"></div>
+    </section>
+
+    <!-- contato -->
+    <section class="contact" id="contato">
+      <canvas class="contact__particles" id="particles" aria-hidden="true"></canvas>
+      <div class="wrap contact__inner">
+        <div class="contact__labels mono">
+          <span class="accent">— Vamos conversar</span>
+          <span class="accent">Aberto a oportunidades</span>
+        </div>
+        <div class="contact__mail">
+          <a class="contact__email" id="email" href="#"></a>
+          <button class="contact__copy mono" id="copyMail" type="button">Copiar e-mail</button>
+        </div>
+        <div class="marquee mono" aria-hidden="true"><div class="marquee__track" id="marquee"></div></div>
+        <ul class="socials" id="socials"></ul>
+      </div>
+      <footer class="footer wrap mono dim">
+        <span id="copy"></span>
+        <a href="#topo">Voltar ao topo ↑</a>
+      </footer>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox__close mono" type="button" id="lightboxClose">Fechar ✕</button>
+    <button class="lightbox__nav lightbox__nav--prev" type="button" id="lightboxPrev" aria-label="Imagem anterior">←</button>
+    <img alt="" id="lightboxImg">
+    <button class="lightbox__nav lightbox__nav--next" type="button" id="lightboxNext" aria-label="Próxima imagem">→</button>
+    <span class="lightbox__count mono" id="lightboxCount"></span>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
